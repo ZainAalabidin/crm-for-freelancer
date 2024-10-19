@@ -1,0 +1,49 @@
+<odoo>
+
+    <record id="project_action" model="ir.actions.act_window">
+        <field name="name">projects</field>
+        <field name="res_model">project</field>
+    </record>
+
+    <menuitem id="project_menu" name="Projects" action="project_action" parent="menu_custom_crm_root" sequence="1"/>
+
+
+
+    <record id="project_view_tree" model="ir.ui.view">
+        <field name="name">project tree</field>
+        <field name="model">project</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="client_id" string='Owner' />
+                <field name="start_date" />
+                <field name="end_date"/>
+                <field name="total_hours" optional="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_view_form" model="ir.ui.view">
+        <field name="name">project form</field>
+        <field name="model">project</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="client_id" />
+                            <field name="start_date" />
+                            <field name="end_date" />
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="task_ids" widget="many2one_tags"/>
+                        </group>       
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

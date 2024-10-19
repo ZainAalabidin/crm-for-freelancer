@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_client,access_client,model_client,,1,1,1,1
+access_project,access_project,model_project,,1,1,1,1
+access_task,access_task,model_task,,1,1,1,1
+access_invoice,access_invoice,model_invoice,,1,1,1,1
+access_tag,access_tag,model_tag,,1,1,1,1
+access_client_interaction,access_client_interaction,model_client_interaction,,1,1,1,1

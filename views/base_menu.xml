@@ -1,0 +1,5 @@
+<odoo>
+    <menuitem
+        id="menu_custom_crm_root"
+        name="Custom CRM"/>
+</odoo>

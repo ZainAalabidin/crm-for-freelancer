@@ -1,0 +1,41 @@
+<odoo>
+
+    <record id="invoice_action" model="ir.actions.act_window">
+        <field name="name">Invoices</field>
+        <field name="res_model">invoice</field>
+    </record>
+
+    <menuitem id="invoice_menu" name="Invoices" action="invoice_action" parent="menu_custom_crm_root"/>
+
+    <record id="invoice_view_tree" model="ir.ui.view">
+        <field name="name">invoice tree</field>
+        <field name="model">invoice</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="project_id" />
+                <field name="client_id"/>
+                <field name="payment_status" />
+                <field name="total_amount" />
+                <field name="due_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="invoice_view_form" model="ir.ui.view">
+        <field name="name">invoice form</field>
+        <field name="model">invoice</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="project_id"/>
+                        <field name="client_id" />
+                        <field name="payment_status" />
+                        <field name="total_amount" />
+                        <field name="due_date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>
