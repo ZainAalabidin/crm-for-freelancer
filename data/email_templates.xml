@@ -1,0 +1,19 @@
+<odoo>
+    <data noupdate="1">
+        <record id="email_template_followup" model="mail.template">
+            <field name="name">Follow Up Email</field>
+            <field name="model_id" ref="model_client"/>
+            <field name="subject">Follow Up with ${object.name}</field>
+            <field name="email_from">${object.env['ir.config_parameter'].sudo().get_param('mail.catchall.alias', default='zynly9303@gmail.com')|safe}</field>
+            <field name="email_to">${object.email}</field>
+            <field name="body_html">
+                <![CDATA[
+                <p>Dear ${object.name},</p>
+                <p>I hope this message finds you well. I wanted to follow up on our previous conversation regarding...</p>
+                <p>Best regards,</p>
+                <p>${(user.name or 'Your Company')}</p>
+                ]]>
+            </field>
+        </record>
+    </data>
+</odoo>

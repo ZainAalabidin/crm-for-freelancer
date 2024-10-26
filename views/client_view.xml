@@ -4,7 +4,7 @@
         <field name="res_model">client</field>
     </record>
 
-    <menuitem id="client_menu" name="Clients" action="client_action" parent="menu_custom_crm_root"/>
+    <menuitem id="client_menu" name="Client Management" action="client_action" parent="menu_custom_crm_root"/>
     <menuitem id="client_menu_item" name="Clients" action="client_action" parent="client_menu"/>
 
     <record id="client_view_tree" model="ir.ui.view">
@@ -45,6 +45,9 @@
                             <field name="interaction_history" />
                         </group>
                     </group>
+                    <xpath expr="//field[@name='interaction_history']" position="after">
+                        <button name="send_followup_email" type="object" string="Send Follow-up Email" class="btn-primary"/>  
+                    </xpath>
                 </sheet>
             </form>
         </field>

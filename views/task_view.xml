@@ -5,7 +5,7 @@
         <field name="res_model">task</field>
     </record>
 
-    <menuitem id="task_menu" name="Tasks" action="task_action" parent="menu_custom_crm_root"/>
+    <menuitem id="task_menu" name="Tasks" action="task_action" parent="project_menu"/>
 
     <record id="task_view_tree" model="ir.ui.view">
         <field name="name">task tree</field>

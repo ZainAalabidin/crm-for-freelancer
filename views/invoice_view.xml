@@ -27,10 +27,12 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <header>
+                        <field name="payment_status" widget="statusbar" options="{'clickable': 1}"/>
+                    </header>
                     <group>
                         <field name="project_id"/>
                         <field name="client_id" />
-                        <field name="payment_status" />
                         <field name="total_amount" />
                         <field name="due_date" />
                     </group>

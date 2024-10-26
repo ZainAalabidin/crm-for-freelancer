@@ -10,6 +10,9 @@
     'category': '',
     'depends': [
         'base',
+        'mail',
+        'calendar',
+        'contacts'
         ],  # List of dependencies
     'data': [
         # List of XML/CSV files for data import, views, security rules, etc.
@@ -21,7 +24,8 @@
         'views/task_view.xml',
         'views/invoice_view.xml',
         'views/tag_view.xml',
-        'views/interaction_view.xml'
+        'views/interaction_view.xml',
+        'data/email_templates.xml'
 
     ],
     'demo': [

@@ -6,5 +6,5 @@ class Task(models.Model):
 
     name = fields.Char('Task Name', required=True)
     is_done = fields.Boolean('Is Done?')
-    project_id = fields.Many2one('project', string='Project Name')
+    project_id = fields.Many2one('project', string='Project Name', ondelete='cascade')
     hours_spent = fields.Float('Hours Spent')

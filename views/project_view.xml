@@ -1,11 +1,11 @@
 <odoo>
-
     <record id="project_action" model="ir.actions.act_window">
         <field name="name">projects</field>
         <field name="res_model">project</field>
     </record>
 
-    <menuitem id="project_menu" name="Projects" action="project_action" parent="menu_custom_crm_root" sequence="1"/>
+    <menuitem id="project_menu" name="Project Management" action="project_action" parent="menu_custom_crm_root" sequence="1"/>
+    <menuitem id="project_menu_item" name="Projects" action="project_action" parent="project_menu" sequence="1"/>
 
 
 
@@ -13,11 +13,12 @@
         <field name="name">project tree</field>
         <field name="model">project</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree multi_edit="1">
                 <field name="name" />
                 <field name="client_id" string='Owner' />
                 <field name="start_date" />
                 <field name="end_date"/>
+                <field name="state"/>
                 <field name="total_hours" optional="1"/>
             </tree>
         </field>
@@ -29,19 +30,47 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <header>
+                        <button string="Start"
+                        name="action_start_project"
+                        type="object"
+                        class="btn-success"
+                        invisible="state not in ['draft', 'on_hold']" />
+
+                        <button string="Hold"
+                        name="action_hold_project"
+                        type="object" class="oe_highlight"
+                        invisible="state not in [
+                        'in_progress',
+                        'completed',
+                        'cancelled'
+                        ]"/>
+
+                        <button string="Complete"
+                        name="action_complete_project"
+                        type="object" class="oe_highlight"
+                        invisible="state not in ['in_progress', 'on_hold']"/>
+
+                        <button string="Cancel"
+                        name="action_cancel_project"
+                        type="object"
+                        invisible="state in ['draft', 'cancelled']"/>
+
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <br/>
                     <group>
                         <group>
                             <field name="name" />
+                            <field name="description" />
                             <field name="client_id" />
                             <field name="start_date" />
-                            <field name="end_date" />
-                            <field name="description" />
+                            <field name="end_date" />               
                         </group>
                         <group>
                             <field name="task_ids" widget="many2one_tags"/>
                         </group>       
                     </group>
-
                 </sheet>
             </form>
         </field>
