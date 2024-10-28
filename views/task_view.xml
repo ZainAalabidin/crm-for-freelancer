@@ -27,10 +27,11 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="name" />
-                        <field name="project_id" string='Project Name' />
-                        <field name="hours_spent" />
-                        <field name="is_done" />
+                        <field name="name" readonly="project_state != 'in_progress'"/>
+                        <field name="project_id" string='Project Name' readonly="project_state != 'in_progress'"/>
+                        <field name="hours_spent" readonly="project_state != 'in_progress'"/>
+                        <field name="is_done" readonly="project_state != 'in_progress'"/>
+                        <field name="project_state" />
                     </group>
                 </sheet>
             </form>

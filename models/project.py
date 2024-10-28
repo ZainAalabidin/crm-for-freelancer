@@ -1,12 +1,13 @@
 from odoo import models, fields
+from odoo.exceptions import UserError
 
 class Project(models.Model):
     _name = 'project'
-    _description = 'Custom CRM for Project'
+    _description = 'Project Model For Project Management.'
 
     name = fields.Char('Project Name', required=True)
     total_hours = fields.Float('Total Hours')
-    client_id = fields.Many2one('client', string='Client Name')
+    client_id = fields.Many2one('client', string='Client Name', required=True)
     start_date = fields.Date('Start Date')
     end_date = fields.Date('End Date')
     task_ids = fields.One2many('task', 'project_id', string='Tasks')
@@ -33,10 +34,14 @@ class Project(models.Model):
 
     def action_complete_project(self):
         if self.state in ['in_progress', 'on_hold']:
-            self.state = 'completed'
+            if any(task.is_done != True for task in self.task_ids):
+                raise UserError('Cannot complete project with incomplete tasks')
+            else:
+                self.state = 'completed'
 
     def action_cancel_project(self):
         if self.state != 'draft':
+
             self.state = 'cancelled'
 
     

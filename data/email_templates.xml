@@ -11,7 +11,7 @@
                 <p>Dear ${object.name},</p>
                 <p>I hope this message finds you well. I wanted to follow up on our previous conversation regarding...</p>
                 <p>Best regards,</p>
-                <p>${(user.name or 'Your Company')}</p>
+                <p>${(user.name or 'Company Name')}</p>
                 ]]>
             </field>
         </record>
