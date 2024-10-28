@@ -1,4 +1,4 @@
-from odoo import models, fields
+from odoo import models, fields, api
 from odoo.exceptions import UserError
 
 class Project(models.Model):
@@ -8,11 +8,11 @@ class Project(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char('Project Name', required=True, tracking="1")
-    total_hours = fields.Float('Total Hours')
+    total_hours = fields.Float('Total Hours', compute="_compute_total_hours", store=True)
     client_id = fields.Many2one('client', string='Client Name', required=True, tracking="1")
     start_date = fields.Date('Start Date', tracking="1")
     end_date = fields.Date('End Date', tracking="1")
-    task_ids = fields.One2many('task', 'project_id', string='Tasks')
+    task_ids = fields.One2many('task', 'project_id', string='Tasks', tracking="1")
     description = fields.Text('Description')
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -46,9 +46,14 @@ class Project(models.Model):
 
             self.state = 'cancelled'
 
+    @api.depends('task_ids.hours_spent', 'task_ids.is_done')
+    def _compute_total_hours(self):
+        for project in self:
+            total_hours = sum(task.hours_spent for task in project.task_ids if task.is_done == True)
+            project.total_hours = total_hours
+
     
 
     def unlink(self):
         rec = super().unlink()
-        
         return rec
