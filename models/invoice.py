@@ -2,7 +2,7 @@ from odoo import models, fields, api
 
 class Invoice(models.Model):
     _name = 'invoice'
-    _description = 'Custom CRM for Invoice'
+    _description = 'Invoice for project'
 
     payment_status = fields.Selection([('paid', 'Paid'), ('unpaid', 'Unpaid')], default='unpaid', string='Payment Status')
     project_id = fields.Many2one('project', string='Project Name', required=True, ondelete='cascade')

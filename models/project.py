@@ -3,7 +3,7 @@ from odoo.exceptions import UserError
 
 class Project(models.Model):
     _name = 'project'
-    _description = 'Project Model For Project Management.'
+    _description = 'Project'
 
     _inherit = ['mail.thread', 'mail.activity.mixin']
 

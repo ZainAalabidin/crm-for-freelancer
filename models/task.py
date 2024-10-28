@@ -3,9 +3,10 @@ from odoo.exceptions import UserError
 
 class Task(models.Model):
     _name = 'task'
-    _description = 'Task Model For Project Management.'
+    _description = 'Task Project.'
 
     name = fields.Char('Task Name', required=True)
+    description = fields.Text('Description')
     is_done = fields.Boolean('Is Done?')
     project_id = fields.Many2one('project', string='Project Name', ondelete='cascade')
     hours_spent = fields.Float('Hours Spent')

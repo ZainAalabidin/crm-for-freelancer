@@ -3,7 +3,7 @@ from odoo.exceptions import UserError
 
 class Client(models.Model):
     _name = 'client'
-    _description = 'Custom CRM For Client'
+    _description = 'Client'
 
     _inherit = ['mail.thread', 'mail.activity.mixin']
 

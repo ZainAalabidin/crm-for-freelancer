@@ -11,9 +11,9 @@
         <field name="name">task tree</field>
         <field name="model">task</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree editable="bottom">
                 <field name="name" />
-                <field name="project_id" string='Project Name'/>
+                <field name="description" />
                 <field name="hours_spent" />
                 <field name="is_done" string='Is Done' />
             </tree>
