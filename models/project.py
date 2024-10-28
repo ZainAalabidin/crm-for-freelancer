@@ -5,11 +5,13 @@ class Project(models.Model):
     _name = 'project'
     _description = 'Project Model For Project Management.'
 
-    name = fields.Char('Project Name', required=True)
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+
+    name = fields.Char('Project Name', required=True, tracking="1")
     total_hours = fields.Float('Total Hours')
-    client_id = fields.Many2one('client', string='Client Name', required=True)
-    start_date = fields.Date('Start Date')
-    end_date = fields.Date('End Date')
+    client_id = fields.Many2one('client', string='Client Name', required=True, tracking="1")
+    start_date = fields.Date('Start Date', tracking="1")
+    end_date = fields.Date('End Date', tracking="1")
     task_ids = fields.One2many('task', 'project_id', string='Tasks')
     description = fields.Text('Description')
     state = fields.Selection([
@@ -18,7 +20,7 @@ class Project(models.Model):
         ('on_hold', 'On Hold'),
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled')
-    ], string='State', default='draft')
+    ], string='State', default='draft', tracking="1")
 
     _sql_constraints = [
         ('unique_project_name', 'unique(name)', 'The project name must be unique.')

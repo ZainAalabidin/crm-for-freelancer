@@ -49,6 +49,11 @@
                         <button name="send_followup_email" type="object" string="Send Follow-up Email" class="btn-primary"/>  
                     </xpath>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_ids" />
+                    <field name="message_follower_ids" />
+                    <field name="activity_ids" />
+                </div>
             </form>
         </field>
     </record>
