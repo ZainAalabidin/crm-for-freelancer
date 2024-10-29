@@ -21,7 +21,6 @@
         'views/project_view.xml',
         'views/base_menu.xml',
         'views/client_view.xml',
-        'views/task_view.xml',
         'views/invoice_view.xml',
         'views/tag_view.xml',
         'views/interaction_view.xml',

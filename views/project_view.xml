@@ -68,7 +68,14 @@
                     </group>
                     <notebook>
                         <page string="Tasks">
-                            <field name="task_ids" widget="many2one_tags" readonly="state not in ['in_progress']"/>
+                            <field name="task_ids" readonly="state not in ['in_progress']">
+                                <tree editable="bottom">
+                                    <field name="name" />
+                                    <field name="description" />
+                                    <field name="hours_spent" />
+                                    <field name="is_done" string='Is Done' />
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </sheet>
@@ -78,6 +85,16 @@
                     <field name="activity_ids" />
                 </div>
             </form>
+        </field>
+    </record>
+    <record id="project_view_search" model="ir.ui.view">
+        <field name="name">project.view.search</field>
+        <field name="model">project</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="client_id" />
+            </search>
         </field>
     </record>
 </odoo>
