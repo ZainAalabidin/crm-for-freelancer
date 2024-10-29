@@ -11,12 +11,13 @@
         <field name="name">invoice tree</field>
         <field name="model">invoice</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-danger="(is_late)">
                 <field name="project_id" />
                 <field name="client_id"/>
                 <field name="payment_status" />
                 <field name="total_amount" />
                 <field name="due_date" />
+                <field name="is_late" invisible="1"/>
             </tree>
         </field>
     </record>
@@ -39,5 +40,16 @@
                 </sheet>
             </form>
         </field>
+    </record>
+
+    <record id="invoice_check_due_date_cron" model="ir.cron">
+        <field name="name">Invoice: Check due date</field>
+        <field name="model_id" ref="model_invoice"/>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+        <field name="numbercall">-1</field>
+        <field name="state">code</field>
+        <field name="code">model.check_due_date()</field>
+        <field name="active">True</field>
     </record>
 </odoo>
