@@ -9,6 +9,7 @@ class Invoice(models.Model):
     client_id = fields.Many2one('client', string='Client Name', required=True, related='project_id.client_id')
     total_amount = fields.Float('Total Amount')
     due_date = fields.Date('Due Date')
+    active = fields.Boolean(default=True)
 
     # @api.onchange('project_id')
     # def _onchange_project_id(self):

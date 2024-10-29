@@ -21,6 +21,7 @@ class Project(models.Model):
         ('completed', 'Completed'),
         ('cancelled', 'Cancelled')
     ], string='State', default='draft', tracking="1")
+    active = fields.Boolean(default=True)
 
     _sql_constraints = [
         ('unique_project_name', 'unique(name)', 'The project name must be unique.')
