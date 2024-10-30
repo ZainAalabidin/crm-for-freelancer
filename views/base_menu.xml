@@ -1,5 +1,7 @@
 <odoo>
     <menuitem
         id="menu_custom_crm_root"
-        name="Custom CRM"/>
+        name="Custom CRM"
+        web_icon="custom_crm,static/description/icon.png"
+    />
 </odoo>
