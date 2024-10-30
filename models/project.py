@@ -7,6 +7,7 @@ class Project(models.Model):
 
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    ref = fields.Char(default="New", readonly=1)
     name = fields.Char('Project Name', required=True, tracking="1")
     total_hours = fields.Float('Total Hours', compute="_compute_total_hours", store=True)
     client_id = fields.Many2one('client', string='Client Name', required=True, tracking="1")
@@ -58,3 +59,11 @@ class Project(models.Model):
     def unlink(self):
         rec = super().unlink()
         return rec
+
+
+    @api.model
+    def create(self, vals):
+        res = super(Project, self).create(vals)
+        if res.ref == 'New':
+            res.ref = self.env['ir.sequence'].next_by_code('project_seq')
+        return res

@@ -18,13 +18,14 @@
         # List of XML/CSV files for data import, views, security rules, etc.
         #'views/my_module_view.xml',
         'security/ir.model.access.csv',
+        'data/email_templates.xml',
+        'data/sequence.xml',
         'views/project_view.xml',
         'views/base_menu.xml',
         'views/client_view.xml',
         'views/invoice_view.xml',
         'views/tag_view.xml',
         'views/interaction_view.xml',
-        'data/email_templates.xml',
         'reports/invoice_report.xml',
 
     ],

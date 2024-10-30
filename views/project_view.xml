@@ -54,11 +54,21 @@
                     invisible="state in ['draft', 'cancelled']"/>
                     <field name="state" widget="statusbar"/>
                 </header>
+
                 <sheet>
+                    <div>
+                        <label for="ref"/>
+                        <h1>
+                            <field name="ref" />
+                        </h1>
+                        <label for="name"/>
+                        <h3>
+                            <field name="name" />
+                        </h3>
+                    </div>
                     <br/>
                     <group>
                         <group>
-                            <field name="name" />
                             <field name="description" />
                             <field name="client_id" />
                             <field name="start_date" />
