@@ -12,6 +12,7 @@
         <field name="model">invoice</field>
         <field name="arch" type="xml">
             <tree decoration-danger="(is_late)">
+                <field name="ref" string="Referance"/>
                 <field name="project_id" />
                 <field name="client_id"/>
                 <field name="payment_status" />
@@ -27,17 +28,28 @@
         <field name="model">invoice</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="payment_status" widget="statusbar" options="{'clickable': 1}"/>
+                </header>
                 <sheet>
-                    <header>
-                        <field name="payment_status" widget="statusbar" options="{'clickable': 1}"/>
-                    </header>
+                    <div class="oe_title">
+                        <label for="ref"/>
+                        <h1>
+                            <field name="ref" />
+                        </h1>
+                    </div>
                     <group>
-                        <field name="project_id"/>
-                        <field name="client_id" />
-                        <field name="total_amount" />
-                        <field name="due_date" />
-                        <field name="is_late" />
+                        <group>
+                            <field name="project_id" />
+                            <field name="client_id" />
+                        </group>
+                        <group>
+                            <field name="total_amount" />
+                            <field name="due_date" />
+                            <field name="is_late" />
+                        </group>
                     </group>
+
                 </sheet>
             </form>
         </field>

@@ -4,6 +4,7 @@ class Invoice(models.Model):
     _name = 'invoice'
     _description = 'Invoice for project'
 
+    ref = fields.Char(default="New", readonly="1")
     payment_status = fields.Selection([('paid', 'Paid'), ('unpaid', 'Unpaid')], default='unpaid', string='Payment Status')
     project_id = fields.Many2one('project', string='Project Name', required=True, ondelete='cascade')
     client_id = fields.Many2one('client', string='Client Name', required=True, related='project_id.client_id')
@@ -19,3 +20,10 @@ class Invoice(models.Model):
                 record.is_late = True
             else:
                 record.is_late = False
+
+    @api.model
+    def create(self, vals):
+        res = super(Invoice, self).create(vals)
+        if res.ref == 'New':
+            res.ref = self.env['ir.sequence'].next_by_code('invoice_seq')
+        return res
