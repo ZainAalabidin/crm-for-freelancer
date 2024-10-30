@@ -15,5 +15,7 @@ class Invoice(models.Model):
     def check_due_date(self):
         records = self.search([])
         for record in records:
-            if record.due_date and record.due_date < fields.Date.today():
+            if record.due_date and record.payment_status != 'paid' and record.due_date < fields.Date.today():
                 record.is_late = True
+            else:
+                record.is_late = False

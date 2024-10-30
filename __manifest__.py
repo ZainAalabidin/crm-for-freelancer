@@ -24,7 +24,8 @@
         'views/invoice_view.xml',
         'views/tag_view.xml',
         'views/interaction_view.xml',
-        'data/email_templates.xml'
+        'data/email_templates.xml',
+        'reports/invoice_report.xml',
 
     ],
     'demo': [

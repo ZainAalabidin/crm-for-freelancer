@@ -36,6 +36,7 @@
                         <field name="client_id" />
                         <field name="total_amount" />
                         <field name="due_date" />
+                        <field name="is_late" />
                     </group>
                 </sheet>
             </form>
