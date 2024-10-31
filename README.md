@@ -46,16 +46,19 @@ This project is a custom CRM and Project Management System built on the Odoo 17 
    pip install -r requirements.txt
 
 - **3** Go to this path:
-   cd odoo17/odoo
+    ```bash
+    cd odoo17/odoo
 
 - **4** Create new directory:
-   mkdir custom_addons
+    ```bash
+    mkdir custom_addons
 
 - **5** Now clone the the application in the new folder:
     ```bash
     git clone https://github.com/yourusername/freelancer-crm.git
-    
-cd freelancer-crm
+
+    ```bash
+    cd freelancer-crm
 
 - **5** start odoo:
     /odoo17/odoo-bin -c odoo.conf
