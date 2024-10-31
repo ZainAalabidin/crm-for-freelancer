@@ -38,6 +38,8 @@ This project is a custom CRM and Project Management System built on the Odoo 17 
 ### Installation
 1. Clone the repository:
    ```bash
+   git clone https://www.github.com/odoo/odoo --depth --branch 17.0 --single-branch odoo17
+   
 - **1** install odoo 17 to use the application:
    "git clone https://www.github.com/odoo/odoo --depth --branch 17.0 --single-branch odoo17"
 
