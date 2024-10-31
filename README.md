@@ -36,12 +36,10 @@ This project is a custom CRM and Project Management System built on the Odoo 17 
 - **PostgreSQL** (or another compatible database for Odoo).
 
 ### Installation
-1. Clone the repository:
+1. Clone odoo17 repository:
    ```bash
    git clone https://www.github.com/odoo/odoo --depth --branch 17.0 --single-branch odoo17
-   
-- **1** install odoo 17 to use the application:
-   "git clone https://www.github.com/odoo/odoo --depth --branch 17.0 --single-branch odoo17"
+
 
 - **2** go to odoo17 file and install the requirement:
    cd oddo17
@@ -54,8 +52,10 @@ This project is a custom CRM and Project Management System built on the Odoo 17 
    mkdir custom_addons
 
 - **5** Now clone the the application in the new folder:
-   git clone https://github.com/yourusername/freelancer-crm.git
-   cd freelancer-crm
+    ```bash
+    git clone https://github.com/yourusername/freelancer-crm.git
+    
+cd freelancer-crm
 
 - **5** start odoo:
     /odoo17/odoo-bin -c odoo.conf
